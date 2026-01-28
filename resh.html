@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    270deg,
+    #7a0000,
+    #b11226,
+    #d72638,
+    #9b111e
+  );
+  background-size: 600% 600%;
+  animation: gradientBG 14s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+}
+
+.intro-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.8rem;
+  line-height: 1.4;
+  animation: slowFade 3s ease forwards;
+}
+
+@keyframes slowFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none; }
+
+/* FINAL REVEAL */
+.reveal {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  animation: slowFade 3s ease forwards;
+}
+
+.reveal img {
+  width: 48%;
+  border-radius: 18px;
+}
+
+.reveal h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  text-align: left;
+}
+
+/* ===== CAKE SECTION ===== */
+.cake-section {
+  margin-top: 40px;
+  animation: slowFade 2s ease forwards;
+}
+
+.tap-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+#cake {
+  width: 350px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  transition: transform 1s ease; /* Smooth transition for sliding */
+}
+
+.slide-down {
+  transform: translateY(300px); /* Move cake down */
+}
+
+.cracker {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 100px;
+  background: url('cracker.png') no-repeat center;
+  background-size: contain;
+  animation: flyUp 1.5s ease forwards;
+  z-index: 2;
+}
+
+@keyframes flyUp {
+  0% { bottom: 0; opacity: 1; }
+  100% { bottom: 200px; opacity: 0; }
+}
+
+.photos {
+  position: fixed; /* Fixed to center of viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 320px;
+  display: none;
+  z-index: 3;
+}
+
+.photos img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 220px;
+  height: 280px;
+  border-radius: 14px;
+  object-fit: cover;
+  opacity: 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* firecracker pop */
+.fire {
+  animation: firePop 0.8s ease forwards;
+}
+
+@keyframes firePop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.2) rotate(-20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.3) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) rotate(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="intro">
+
+    <img id="gif1" src="giphy.gif" style="width:150px;margin-bottom:25px;border-radius:16px;">
+    <img id="gif2" src="22.gif" class="hidden" style="width:150px;margin-bottom:25px;border-radius:16px;">
+
+    <h1 class="intro-text" id="msg1">
+      Hello Senior 👀<br>Can i barrow Few minutes.....
+    </h1>
+
+    <h1 class="intro-text hidden" id="msg2">
+      Guess who is 23 today? 🎉
+    </h1>
+
+    <div id="msg3" class="reveal" style="display:none;">
+      <img src="reshjjj.jpeg">
+      <h1>You 🫵</h1>
+    </div>
+
+    <!-- CAKE NEXT SECTION -->
+    <div id="cakeSection" class="hidden cake-section">
+      <p class="tap-text">Tap the cake 🎂</p>
+
+      <div style="position: relative;">
+        <img id="cake" src="cake.png" alt="Cake">
+        <div class="cracker"></div>
+        <div class="photos">
+          <img src="2.jpeg">
+          <img src="3.jpeg">
+          <img src="4.jpeg">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+// original flow
+setTimeout(() => {
+  gif1.style.display = msg1.style.display = "none";
+  gif2.style.display = msg2.style.display = "block";
+}, 5000);
+
+setTimeout(() => {
+  gif2.style.display = msg2.style.display = "none";
+  msg3.style.display = "flex";
+}, 10000);
+
+setTimeout(() => {
+  msg3.style.display = "none";
+  cakeSection.classList.remove("hidden");
+}, 14000);
+
+// cake interaction
+const cake = document.getElementById('cake');
+const tapText = document.querySelector('.tap-text');
+const cracker = document.querySelector('.cracker');
+const photos = document.querySelector('.photos');
+const pics = document.querySelectorAll(".photos img");
+let i = 0;
+
+cake.addEventListener("click", () => {
+  tapText.style.display = 'none';
+  cracker.style.display = 'block';
+  cake.classList.add('slide-down'); // Slide cake down
+  setTimeout(() => {
+    photos.style.display = 'block';
+    showNextPhoto();
+  }, 1500);
+});
+
+function showNextPhoto() {
+  if (i >= pics.length) return;
+  pics[i].classList.add("fire");
+  pics[i].style.opacity = 1;
+  setTimeout(() => {
+    pics[i].style.opacity = 0;
+    pics[i].classList.remove("fire");
+    i++;
+    showNextPhoto();
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
