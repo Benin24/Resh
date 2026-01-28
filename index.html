@@ -111,10 +111,11 @@ body {
   transform: translate(-50%, -50%);
   display: none;
   z-index: 3;
-  font-family: 'Pacifico', cursive;
-  font-size: 2.5rem;
+  font-family: Arial, sans-serif; /* Changed to normal font for paragraph look */
+  font-size: 1.2rem; /* Reduced size for normal paragraph appearance */
   text-align: center;
   animation: messageFade 2s ease forwards;
+  line-height: 1.5; /* Added line-height for better paragraph readability */
 }
 
 @keyframes messageFade {
@@ -125,6 +126,12 @@ body {
 </head>
 
 <body>
+
+<!-- Background Music - Hidden Player -->
+<audio id="bg-music" autoplay loop style="display: none;">
+  <source src="nuuu.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <div class="container">
 
@@ -152,9 +159,13 @@ body {
 
       <div style="position: relative;">
         <img id="cake" src="cake.png" alt="Cake">
-        <div class="birthday-message">
-          Happy Birthday! 🎉<br>Wishing you a year filled with joy, success, and all your dreams coming true! 🥳
-        </div>
+        <p class="birthday-message">
+          Happy Birthday! 🎉<br>Another year has come and gone,
+Another chapter, a brand new dawn.
+May this day be filled with joy and light,
+And all your future days be bright.
+Happy Birthday, you deserve the best!  🥳
+        </p>
       </div>
     </div>
 
