@@ -81,7 +81,7 @@ body {
 
 /* ===== CAKE SECTION ===== */
 .cake-section {
-  margin-top: 30px;
+  margin-top: 40px;
   animation: slowFade 2s ease forwards;
 }
 
@@ -97,44 +97,74 @@ body {
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  transition: transform 1s ease; /* Smooth transition for sliding */
+  transition: transform 1s ease;
 }
 
 .slide-down {
-  transform: translateY(300px); /* Move cake down */
+  transform: translateY(300px);
 }
 
 .birthday-message {
-  position: absolute; /* Changed from fixed to absolute for centering within the container */
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
   z-index: 3;
-  font-family: Arial, sans-serif; /* Changed to normal font for paragraph look */
-  font-size: 1.2rem; /* Reduced size for normal paragraph appearance */
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
   text-align: center;
   animation: messageFade 2s ease forwards;
-  line-height: 1.5; /* Added line-height for better paragraph readability */
+  line-height: 1.5;
 }
 
 @keyframes messageFade {
   from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
+
+/* ===== THREE BUTTONS SECTION ===== */
+.three-buttons {
+  display: none;
+  margin-top: 5px;
+  flex-direction: row;
+  justify-content: below;
+  gap: 10px;
+  animation: pop 0.5s ease forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  flex: 1;
+  max-width: 120px;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 </style>
 </head>
 
 <body>
 
-<!-- Background Music - Hidden Player -->
-<audio id="bg-music" autoplay loop style="display: none;">
+<audio id="bg-music" autoplay loop style="display:none;">
   <source src="nuuu.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
 <div class="container">
-
   <div id="intro">
 
     <img id="gif1" src="giphy.gif" style="width:150px;margin-bottom:25px;border-radius:16px;">
@@ -153,28 +183,43 @@ body {
       <h1>You 🫵</h1>
     </div>
 
-    <!-- CAKE NEXT SECTION -->
     <div id="cakeSection" class="hidden cake-section">
       <p class="tap-text">Tap the cake 🎂</p>
 
       <div style="position: relative;">
-        <img id="cake" src="gggg.gif" alt="Cake">
+        <img id="cake" src="cake.png" alt="Cake">
         <p class="birthday-message">
-          Happy Birthday! 🎉<br>Another year has come and gone,
-Another chapter, a brand new dawn.
-May this day be filled with joy and light,
-And all your future days be bright.
-Happy Birthday, you deserve the best!  🥳
+          Happy Birthday! 🎉<br>
+          Another year has come and gone,<br>
+          Another chapter, a brand new dawn.<br>
+          May this day be filled with joy and light,<br>
+          And all your future days be bright.<br>
+          Happy Birthday, you deserve the best! 🥳
         </p>
+      </div>
+
+      <div id="threeButtons" class="three-buttons">
+        <button class="button" id="videosBtn">Videos 🎥</button>
+        <button class="button" id="imagesBtn">Images 🖼️</button>
+        <button class="button" id="wishesBtn">Wishes 💌</button>
       </div>
     </div>
 
   </div>
-
 </div>
 
 <script>
-// original flow
+const gif1 = document.getElementById('gif1');
+const gif2 = document.getElementById('gif2');
+const msg1 = document.getElementById('msg1');
+const msg2 = document.getElementById('msg2');
+const msg3 = document.getElementById('msg3');
+const cakeSection = document.getElementById('cakeSection');
+const cake = document.getElementById('cake');
+const tapText = document.querySelector('.tap-text');
+const birthdayMessage = document.querySelector('.birthday-message');
+const threeButtons = document.getElementById('threeButtons');
+
 setTimeout(() => {
   gif1.style.display = msg1.style.display = "none";
   gif2.style.display = msg2.style.display = "block";
@@ -190,20 +235,24 @@ setTimeout(() => {
   cakeSection.classList.remove("hidden");
 }, 14000);
 
-// cake interaction
-const cake = document.getElementById('cake');
-const tapText = document.querySelector('.tap-text');
-const birthdayMessage = document.querySelector('.birthday-message');
-
+// ✅ UPDATED LOGIC (ONLY CHANGE)
 cake.addEventListener("click", () => {
   tapText.style.display = 'none';
-  cake.classList.add('slide-down'); // Slide cake down
+  cake.classList.add('slide-down');
+
   setTimeout(() => {
     birthdayMessage.style.display = 'block';
   }, 1000);
+
+  setTimeout(() => {
+    threeButtons.style.display = 'flex';
+  }, 3000);
 });
+
+document.getElementById('videosBtn').onclick = () => alert('Videos button clicked!');
+document.getElementById('imagesBtn').onclick = () => alert('Images button clicked!');
+document.getElementById('wishesBtn').onclick = () => alert('Wishes button clicked!');
 </script>
 
 </body>
 </html>
-
