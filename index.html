@@ -39,6 +39,7 @@ body {
 
 .container {
   padding: 20px;
+  padding-bottom: 120px;
   max-width: 420px;
   width: 100%;
   text-align: center;
@@ -60,7 +61,6 @@ body {
 
 .hidden { display: none; }
 
-/* FINAL REVEAL */
 .reveal {
   display: flex;
   align-items: center;
@@ -79,7 +79,6 @@ body {
   text-align: left;
 }
 
-/* ===== CAKE SECTION ===== */
 .cake-section {
   margin-top: 40px;
   animation: slowFade 2s ease forwards;
@@ -123,37 +122,44 @@ body {
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-/* ===== THREE BUTTONS SECTION ===== */
+/* ===== THREE BUTTONS SMALL AND VERTICAL ON RIGHT SIDE ===== */
 .three-buttons {
   display: none;
-  margin-top: 5px;
-  flex-direction: row;
-  justify-content: below;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
   gap: 10px;
   animation: pop 0.5s ease forwards;
 }
 
 @keyframes pop {
-  from { transform: scale(0); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from { transform: translateY(-50%) scale(0); opacity: 0; }
+  to { transform: translateY(-50%) scale(1); opacity: 1; }
 }
 
 .button {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid white;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   font-family: 'Pacifico', cursive;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s ease;
   flex: 1;
-  max-width: 120px;
+  max-width: 100px;
 }
 
 .button:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* SECOND GIF POSITION ADJUSTED ABOVE THE MESSAGE AND CENTERED */
+#gif2 {
+  margin-bottom: 20px;
 }
 </style>
 </head>
@@ -168,12 +174,12 @@ body {
   <div id="intro">
 
     <img id="gif1" src="giphy.gif" style="width:150px;margin-bottom:25px;border-radius:16px;">
-    <img id="gif2" src="22.gif" class="hidden" style="width:150px;margin-bottom:25px;border-radius:16px;">
-
+    
     <h1 class="intro-text" id="msg1">
-      Hello Senior 👀<br>Can i barrow Few minutes.....
+      Hello Senior 👀<br>Can i barrow Your Few minutes.....
     </h1>
 
+    <img id="gif2" src="22.gif" class="hidden" style="width:150px;margin-bottom:25px;border-radius:16px;">
     <h1 class="intro-text hidden" id="msg2">
       Guess who is 23 today? 🎉
     </h1>
@@ -196,12 +202,12 @@ body {
           And all your future days be bright.<br>
           Happy Birthday, you deserve the best! 🥳
         </p>
-      </div>
 
-      <div id="threeButtons" class="three-buttons">
-        <button class="button" id="videosBtn">Videos 🎥</button>
-        <button class="button" id="imagesBtn">Images 🖼️</button>
-        <button class="button" id="wishesBtn">Wishes 💌</button>
+        <div id="threeButtons" class="three-buttons">
+          <button class="button" id="videosBtn">Videos 🎥</button>
+          <button class="button" id="imagesBtn">Images 🖼️</button>
+          <button class="button" id="wishesBtn">Wishes 💌</button>
+        </div>
       </div>
     </div>
 
@@ -235,7 +241,6 @@ setTimeout(() => {
   cakeSection.classList.remove("hidden");
 }, 14000);
 
-// ✅ UPDATED LOGIC (ONLY CHANGE)
 cake.addEventListener("click", () => {
   tapText.style.display = 'none';
   cake.classList.add('slide-down');
@@ -246,7 +251,7 @@ cake.addEventListener("click", () => {
 
   setTimeout(() => {
     threeButtons.style.display = 'flex';
-  }, 3000);
+  }, 6000);
 });
 
 document.getElementById('videosBtn').onclick = () => alert('Videos button clicked!');
