@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video, Images, and Wishes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #DC143C; /* Crimson red background */
+            animation: bgAnimate 2s infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        @keyframes bgAnimate {
+            0% { background-color: #DC143C; } /* Crimson red */
+            50% { background-color: #B22222; } /* Firebrick for animation */
+            100% { background-color: #DC143C; } /* Back to crimson red */
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .content {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px; /* Spacing between images */
+            justify-items: center;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 250px; /* Increased from 200px */
+            height: 250px; /* Increased from 200px */
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flip-card-front {
+            background-color: transparent;
+        }
+        .flip-card-back {
+            background-color: #f8f8f8;
+            color: #333;
+            transform: rotateY(180deg);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px; /* Added padding for better text fit */
+            box-sizing: border-box; /* Ensures padding doesn't overflow */
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images fit without distortion */
+            border-radius: 10px;
+        }
+        .wishes img {
+            margin: 10px;
+            width: 300px;
+            height: auto;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Videos, Pictures, and Wishes</h1>
+        <div class="buttons">
+            <button id="videoBtn">Video</button>
+            <button id="imageBtn">Images</button>
+            <button id="wishesBtn">Wishes</button>
+        </div>
+    </div>
+
+    <div id="videoSection" class="content">
+        <h2>Video</h2>
+        <video controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="imageSection" class="content">
+        <h2>Image Gallery</h2>
+        <h3>Tap Images </h3>
+        <div class="gallery">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="1.jpeg" alt="Image 1">
+                    </div>
+                    <div class="flip-card-back">
+                        ஆயிரம் ஆண்கள் இருக்கும் கூட்டத்தில் உன்னை வர்ணித்தால், அது அழகல்ல! ஆயிரம் பெண்கள் இருந்தும், அக்கூட்டத்தில் உன்னை வர்ணித்தால், அது அழகு!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="2.jpeg" alt="Image 2">
+                    </div>
+                    <div class="flip-card-back">
+                        Your beauty isn’t loud, but it’s impossible to ignore. It feels calm, natural, and real<br>by author -Benin the great
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="3.jpeg" alt="Image 3">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="4.jpeg" alt="Image 4">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="5.jpeg" alt="Image 5">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="6.jpeg" alt="Image 6">
+                    </div>
+                    <div class="flip-card-back">
+                        உன் கண்ணக்குழிக்கும், வெக்கத்திற்கும் தொடர்பு உண்டு! அதில் தொலைந்து போனவர்கள் ஆயிரம் உண்டு!
+
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="7.jpeg" alt="Image 7">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="8.jpeg" alt="Image 8">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="9.jpeg" alt="Image 9">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="10.jpeg" alt="Image 10">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="11.jpeg" alt="Image 11">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="12.jpeg" alt="Image 12">
+                    </div>
+                    <div class="flip-card-back">
+                        You’re not just beautiful—you’re the perfect combination of beauty, intelligence, kindness, and humility. Everything that truly matters, and everything most boys admire.
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="13.jpeg" alt="Image 13">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="14.jpeg" alt="Image 14">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="15.jpeg" alt="Image 15">
+                    </div>
+                    <div class="flip-card-back">
+                        I am Jeolous of boy who is going to marry you one day. Because He is going to spend his whole life with Angel.
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="16.jpeg" alt="Image 16">
+                    </div>
+                    <div class="flip-card-back">
+                        Happy Birthday!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wishesSection" class="content">
+        <h2>Wishes</h2>
+        <div class="wishes">
+            <img src="https://via.placeholder.com/300x200?text=Happy+Birthday" alt="Happy Birthday Wish">
+            <img src="https://via.placeholder.com/300x200?text=Congratulations" alt="Congratulations Wish">
+            <img src="https://via.placeholder.com/300x200?text=Best+Wishes" alt="Best Wishes">
+        </div>
+    </div>
+
+    <script>
+        // Get elements
+        const videoBtn = document.getElementById('videoBtn');
+        const imageBtn = document.getElementById('imageBtn');
+        const wishesBtn = document.getElementById('wishesBtn');
+        const videoSection = document.getElementById('videoSection');
+        const imageSection = document.getElementById('imageSection');
+        const wishesSection = document.getElementById('wishesSection');
+
+        // Function to hide all sections
+        function hideAllSections() {
+            videoSection.style.display = 'none';
+            imageSection.style.display = 'none';
+            wishesSection.style.display = 'none';
+        }
+
+        // Event listeners for buttons
+        videoBtn.addEventListener('click', () => {
+            hideAllSections();
+            videoSection.style.display = 'block';
+        });
+
+        imageBtn.addEventListener('click', () => {
+            hideAllSections();
+            imageSection.style.display = 'block';
+        });
+
+        wishesBtn.addEventListener('click', () => {
+            hideAllSections();
+            wishesSection.style.display = 'block';
+        });
+
+        // Flip card functionality on click
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
+</body>
+</html>

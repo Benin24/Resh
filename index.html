@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    270deg,
+    #7a0000,
+    #b11226,
+    #d72638,
+    #9b111e
+  );
+  background-size: 600% 600%;
+  animation: gradientBG 14s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  padding: 20px;
+  padding-bottom: 120px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+}
+
+.intro-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.8rem;
+  line-height: 1.4;
+  animation: slowFade 3s ease forwards;
+}
+
+@keyframes slowFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none; }
+
+.reveal {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  animation: slowFade 3s ease forwards;
+}
+
+.reveal img {
+  width: 48%;
+  border-radius: 18px;
+}
+
+.reveal h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  text-align: left;
+}
+
+.cake-section {
+  margin-top: 40px;
+  animation: slowFade 2s ease forwards;
+}
+
+.tap-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+#cake {
+  width: 350px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  transition: transform 1s ease;
+}
+
+.slide-down {
+  transform: translateY(300px);
+}
+
+.birthday-message {
+  margin-top: 20px;
+  display: none;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  animation: messageFade 2s ease forwards;
+  line-height: 1.5;
+}
+
+@keyframes messageFade {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ===== SINGLE NEXT BUTTON ===== */
+.next-button {
+  display: none;
+  margin-top: 20px;
+  animation: pop 0.5s ease forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bg-music" autoplay loop style="display:none;">
+  <source src="nuuu.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div id="intro">
+
+    <img id="gif1" src="giphy.gif" style="width:150px;margin-bottom:25px;border-radius:16px;">
+    
+    <h1 class="intro-text" id="msg1">
+      Hello Senior 👀<br>Can i barrow Your Few minutes.....
+    </h1>
+
+    <img id="gif2" src="22.gif" class="hidden" style="width:150px;margin-bottom:25px;border-radius:16px;">
+    <h1 class="intro-text hidden" id="msg2">
+      Guess who is 23 today? 🎉
+    </h1>
+
+    <div id="msg3" class="reveal" style="display:none;">
+      <img src="reshjjj.jpeg">
+      <h1>You 🫵</h1>
+    </div>
+
+    <div id="cakeSection" class="hidden cake-section">
+      <p class="tap-text">Tap the cake 🎂</p>
+
+      <img id="cake" src="cake.png" alt="Cake">
+
+      <p class="birthday-message" id="birthdayMessage">
+        Happy Birthday! 🎉<br>
+        Another year has come and gone,<br>
+        Another chapter, a brand new dawn.<br>
+        May this day be filled with joy and light,<br>
+        And all your future days be bright.<br>
+        Happy Birthday, you deserve the best! 🥳
+      </p>
+
+      <div id="nextBtn" class="next-button">
+        <button class="button">Next Page ➡️</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+const gif1 = document.getElementById('gif1');
+const gif2 = document.getElementById('gif2');
+const msg1 = document.getElementById('msg1');
+const msg2 = document.getElementById('msg2');
+const msg3 = document.getElementById('msg3');
+const cakeSection = document.getElementById('cakeSection');
+const cake = document.getElementById('cake');
+const tapText = document.querySelector('.tap-text');
+const birthdayMessage = document.getElementById('birthdayMessage');
+const nextBtn = document.getElementById('nextBtn');
+
+setTimeout(() => {
+  gif1.style.display = msg1.style.display = "none";
+  gif2.style.display = msg2.style.display = "block";
+}, 5000);
+
+setTimeout(() => {
+  gif2.style.display = msg2.style.display = "none";
+  msg3.style.display = "flex";
+}, 10000);
+
+setTimeout(() => {
+  msg3.style.display = "none";
+  cakeSection.classList.remove("hidden");
+}, 14000);
+
+cake.addEventListener("click", () => {
+  tapText.style.display = 'none';
+  cake.classList.add('slide-down');
+
+  setTimeout(() => {
+    birthdayMessage.style.display = 'block';
+  }, 1000);
+
+  setTimeout(() => {
+    nextBtn.style.display = 'block';
+  }, 4000);
+});
+
+document.querySelector('#nextBtn button').onclick = () => {
+  window.location.href = "nextpage.html";
+};
+</script>
+
+</body>
+</html>
