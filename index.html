@@ -104,12 +104,8 @@ body {
 }
 
 .birthday-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 20px;
   display: none;
-  z-index: 3;
   font-family: Arial, sans-serif;
   font-size: 1.2rem;
   text-align: center;
@@ -118,48 +114,36 @@ body {
 }
 
 @keyframes messageFade {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* ===== THREE BUTTONS SMALL AND VERTICAL ON RIGHT SIDE ===== */
-.three-buttons {
+/* ===== SINGLE NEXT BUTTON ===== */
+.next-button {
   display: none;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  flex-direction: column;
-  gap: 10px;
+  margin-top: 20px;
   animation: pop 0.5s ease forwards;
 }
 
 @keyframes pop {
-  from { transform: translateY(-50%) scale(0); opacity: 0; }
-  to { transform: translateY(-50%) scale(1); opacity: 1; }
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid white;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 12px 20px;
   text-align: center;
   font-family: 'Pacifico', cursive;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  flex: 1;
-  max-width: 100px;
 }
 
 .button:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* SECOND GIF POSITION ADJUSTED ABOVE THE MESSAGE AND CENTERED */
-#gif2 {
-  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.3);
 }
 </style>
 </head>
@@ -192,23 +176,21 @@ body {
     <div id="cakeSection" class="hidden cake-section">
       <p class="tap-text">Tap the cake 🎂</p>
 
-      <div style="position: relative;">
-        <img id="cake" src="cake.png" alt="Cake">
-        <p class="birthday-message">
-          Happy Birthday! 🎉<br>
-          Another year has come and gone,<br>
-          Another chapter, a brand new dawn.<br>
-          May this day be filled with joy and light,<br>
-          And all your future days be bright.<br>
-          Happy Birthday, you deserve the best! 🥳
-        </p>
+      <img id="cake" src="cake.png" alt="Cake">
 
-        <div id="threeButtons" class="three-buttons">
-          <button class="button" id="videosBtn">Videos 🎥</button>
-          <button class="button" id="imagesBtn">Images 🖼️</button>
-          <button class="button" id="wishesBtn">Wishes 💌</button>
-        </div>
+      <p class="birthday-message" id="birthdayMessage">
+        Happy Birthday! 🎉<br>
+        Another year has come and gone,<br>
+        Another chapter, a brand new dawn.<br>
+        May this day be filled with joy and light,<br>
+        And all your future days be bright.<br>
+        Happy Birthday, you deserve the best! 🥳
+      </p>
+
+      <div id="nextBtn" class="next-button">
+        <button class="button">Next Page ➡️</button>
       </div>
+
     </div>
 
   </div>
@@ -223,8 +205,8 @@ const msg3 = document.getElementById('msg3');
 const cakeSection = document.getElementById('cakeSection');
 const cake = document.getElementById('cake');
 const tapText = document.querySelector('.tap-text');
-const birthdayMessage = document.querySelector('.birthday-message');
-const threeButtons = document.getElementById('threeButtons');
+const birthdayMessage = document.getElementById('birthdayMessage');
+const nextBtn = document.getElementById('nextBtn');
 
 setTimeout(() => {
   gif1.style.display = msg1.style.display = "none";
@@ -250,13 +232,13 @@ cake.addEventListener("click", () => {
   }, 1000);
 
   setTimeout(() => {
-    threeButtons.style.display = 'flex';
-  }, 6000);
+    nextBtn.style.display = 'block';
+  }, 4000);
 });
 
-document.getElementById('videosBtn').onclick = () => alert('Videos button clicked!');
-document.getElementById('imagesBtn').onclick = () => alert('Images button clicked!');
-document.getElementById('wishesBtn').onclick = () => alert('Wishes button clicked!');
+document.querySelector('#nextBtn button').onclick = () => {
+  window.location.href = "nextpage.html";
+};
 </script>
 
 </body>
