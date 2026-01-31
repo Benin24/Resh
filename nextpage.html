@@ -30,12 +30,14 @@
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
+            border-radius: 15px;
         }
         button {
             margin: 0 10px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 15px;
         }
         .content {
             display: none;
@@ -108,18 +110,24 @@
 </head>
 <body>
     <div class="header">
-        <h1>Welcome to Videos, Pictures, and Wishes</h1>
+        <h1>Little More surprise</h1>
         <div class="buttons">
-            <button id="videoBtn">Video</button>
-            <button id="imageBtn">Images</button>
-            <button id="wishesBtn">Wishes</button>
+            <button id="videoBtn">CLiCK ME First</button>
+            <button id="imageBtn">Or ME</button>
+            <button id="wishesBtn">ME FiRST</button> <!-- Changed button text to "Video Player" -->
         </div>
     </div>
+
+    <!-- Hidden audio element for background music -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/wav"> <!-- Placeholder music URL; replace with your desired music file -->
+        Your browser does not support the audio element.
+    </audio>
 
     <div id="videoSection" class="content">
         <h2>Video</h2>
         <video controls>
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="wishes.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -154,7 +162,7 @@
                         <img src="3.jpeg" alt="Image 3">
                     </div>
                     <div class="flip-card-back">
-                        Happy Birthday!
+                         You’re not just beautiful—you’re the perfect combination of beauty, intelligence, kindness, and humility. Everything that truly matters, and everything most boys admire.
                     </div>
                 </div>
             </div>
@@ -164,7 +172,7 @@
                         <img src="4.jpeg" alt="Image 4">
                     </div>
                     <div class="flip-card-back">
-                        Happy Birthday!
+                       I searched the whole dictionary to find the perfect words to wish you, but I found only one truth—your beauty can’t be described in words.
                     </div>
                 </div>
             </div>
@@ -174,7 +182,7 @@
                         <img src="5.jpeg" alt="Image 5">
                     </div>
                     <div class="flip-card-back">
-                        Happy Birthday!
+                       At 23, you’re not just growing older—you’re growing more beautiful, wiser, and stronger in every way. May this year bring you confidence in your dreams, peace in your heart, and smiles that never fade. You truly deserve all the love and happiness coming your way. Have an amazing year ahead 🤍
                     </div>
                 </div>
             </div>
@@ -189,116 +197,15 @@
                     </div>
                 </div>
             </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="7.jpeg" alt="Image 7">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="8.jpeg" alt="Image 8">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="9.jpeg" alt="Image 9">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="10.jpeg" alt="Image 10">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="11.jpeg" alt="Image 11">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="12.jpeg" alt="Image 12">
-                    </div>
-                    <div class="flip-card-back">
-                        You’re not just beautiful—you’re the perfect combination of beauty, intelligence, kindness, and humility. Everything that truly matters, and everything most boys admire.
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="13.jpeg" alt="Image 13">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="14.jpeg" alt="Image 14">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="15.jpeg" alt="Image 15">
-                    </div>
-                    <div class="flip-card-back">
-                        I am Jeolous of boy who is going to marry you one day. Because He is going to spend his whole life with Angel.
-                    </div>
-                </div>
-            </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="16.jpeg" alt="Image 16">
-                    </div>
-                    <div class="flip-card-back">
-                        Happy Birthday!
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
     <div id="wishesSection" class="content">
-        <h2>Wishes</h2>
-        <div class="wishes">
-            <img src="https://via.placeholder.com/300x200?text=Happy+Birthday" alt="Happy Birthday Wish">
-            <img src="https://via.placeholder.com/300x200?text=Congratulations" alt="Congratulations Wish">
-            <img src="https://via.placeholder.com/300x200?text=Best+Wishes" alt="Best Wishes">
-        </div>
+        <h2>Video Player</h2> <!-- Changed heading to "Video Player" -->
+        <video controls> <!-- Replaced wishes content with video player -->
+            <source src="funny.mp4" type="video/mp4"> <!-- Using the same video source; replace with your desired video if needed -->
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <script>
@@ -309,6 +216,7 @@
         const videoSection = document.getElementById('videoSection');
         const imageSection = document.getElementById('imageSection');
         const wishesSection = document.getElementById('wishesSection');
+        const bgMusic = document.getElementById('bgMusic');
 
         // Function to hide all sections
         function hideAllSections() {
@@ -321,16 +229,24 @@
         videoBtn.addEventListener('click', () => {
             hideAllSections();
             videoSection.style.display = 'block';
+            bgMusic.pause(); // Stop music when switching to video
         });
 
         imageBtn.addEventListener('click', () => {
             hideAllSections();
             imageSection.style.display = 'block';
+            bgMusic.play(); // Play music when images section is shown
         });
 
         wishesBtn.addEventListener('click', () => {
             hideAllSections();
             wishesSection.style.display = 'block';
+            bgMusic.pause(); // Stop music when switching to wishes (now video player)
+        });
+
+        // Stop music when the page is unloaded (e.g., user closes or navigates away)
+        window.addEventListener('beforeunload', () => {
+            bgMusic.pause();
         });
 
         // Flip card functionality on click
@@ -342,4 +258,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
