@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +29,34 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
+  flex-direction: column; /* Added to stack button and container */
 }
 
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+.start-button {
+  margin-bottom: 20px;
+  animation: pop 0.5s ease forwards;
+}
+
+.button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .container {
@@ -46,13 +67,14 @@ body {
   text-align: center;
   position: relative;
   overflow: visible;
+  display: none; /* Initially hidden */
 }
 
 .intro-text {
   font-family: 'Pacifico', cursive;
   font-size: 2.8rem;
   line-height: 1.4;
-  animation: slowFade 3s ease forwards;
+  animation: slowFade 6s ease forwards; /* Slowed down from 3s to 4s */
 }
 
 @keyframes slowFade {
@@ -66,7 +88,7 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  animation: slowFade 3s ease forwards;
+  animation: slowFade 6s ease forwards; /* Slowed down from 3s to 4s */
 }
 
 .reveal img {
@@ -82,7 +104,7 @@ body {
 
 .cake-section {
   margin-top: 40px;
-  animation: slowFade 2s ease forwards;
+  animation: slowFade 4s ease forwards; /* Slowed down from 2s to 2.5s */
 }
 
 .tap-text {
@@ -92,12 +114,12 @@ body {
 }
 
 #cake {
-  width: 350px;
+  width: 50px;
   cursor: pointer;
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  transition: transform 1s ease;
+  transition: transform 1.5s ease; /* Slowed down from 1s to 1.5s */
 }
 
 .slide-down {
@@ -110,7 +132,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 1.2rem;
   text-align: center;
-  animation: messageFade 2s ease forwards;
+  animation: messageFade 2.5s ease forwards; /* Slowed down from 2s to 2.5s */
   line-height: 1.5;
 }
 
@@ -130,32 +152,27 @@ body {
   from { transform: scale(0); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-
-.button {
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid white;
-  border-radius: 12px;
-  padding: 12px 20px;
-  text-align: center;
-  font-family: 'Pacifico', cursive;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.button:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
 </style>
 </head>
 
 <body>
 
-<audio id="bg-music" autoplay loop style="display:none;">
-  <source src="nuuu.mp3" type="audio/mpeg">
+<audio id="bg-music" loop style="display:none;">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container">
+<div class="start-button" id="startSection">
+  <button class="button" id="startBtn">Click Me</button>
+  <h2>
+    Please make sure your volume is up 🔊<br>
+    AND be CAutious while clicking the button! 😅<br>
+    Cause it's gonna take you on a little surprise ride! 🎢<br>
+    I Guess you will like it! 😉<br>
+    or maybe not
+  </h2>
+</div>
+
+<div class="container" id="mainContainer">
   <div id="intro">
 
     <img id="gif1" src="giphy.gif" style="width:150px;margin-bottom:25px;border-radius:16px;">
@@ -177,20 +194,19 @@ body {
     <div id="cakeSection" class="hidden cake-section">
       <p class="tap-text">Tap the cake 🎂</p>
 
-      <img id="cake" src="cake.png" alt="Cake">
-
       <p class="birthday-message" id="birthdayMessage">
-        Happy Birthday! 🎉<br>
-        Another year has come and gone,<br>
-        Another chapter, a brand new dawn.<br>
-        May this day be filled with joy and light,<br>
-        And all your future days be bright.<br>
-        Happy Birthday, you deserve the best! 🥳
+       ஒரு ஆண்டு வந்து சென்றது,
+ஒரு புதிய அத்தியாயம், புதிய விடியல் தொடங்கியது.
+இந்த நாள் மகிழ்ச்சியும் ஒளியுமாக நிரம்பட்டும்,
+உன் வருங்கால நாட்கள் அனைத்தும் பிரகாசமாகட்டும்.
+இனிய பிறந்தநாள் வாழ்த்துகள் — நீ சிறந்ததையே பெற தகுதியானவள்! 🥳🎂
       </p>
 
       <div id="nextBtn" class="next-button">
         <button class="button">Next Page ➡️</button>
       </div>
+
+      <img id="cake" src="cake.png" alt="Cake">
 
     </div>
 
@@ -198,6 +214,9 @@ body {
 </div>
 
 <script>
+const startSection = document.getElementById('startSection');
+const mainContainer = document.getElementById('mainContainer');
+const bgMusic = document.getElementById('bg-music');
 const gif1 = document.getElementById('gif1');
 const gif2 = document.getElementById('gif2');
 const msg1 = document.getElementById('msg1');
@@ -209,20 +228,27 @@ const tapText = document.querySelector('.tap-text');
 const birthdayMessage = document.getElementById('birthdayMessage');
 const nextBtn = document.getElementById('nextBtn');
 
-setTimeout(() => {
-  gif1.style.display = msg1.style.display = "none";
-  gif2.style.display = msg2.style.display = "block";
-}, 5000);
+startSection.addEventListener('click', () => {
+  startSection.style.display = 'none'; // Hide the entire start section (button and text)
+  mainContainer.style.display = 'block'; // Show the main content
+  bgMusic.play(); // Play the background music
 
-setTimeout(() => {
-  gif2.style.display = msg2.style.display = "none";
-  msg3.style.display = "flex";
-}, 10000);
+  // Start the timed animations (each message visible for at least 5 seconds)
+  setTimeout(() => {
+    gif1.style.display = msg1.style.display = "none";
+    gif2.style.display = msg2.style.display = "block";
+  }, 5000); // First message for 5s
 
-setTimeout(() => {
-  msg3.style.display = "none";
-  cakeSection.classList.remove("hidden");
-}, 14000);
+  setTimeout(() => {
+    gif2.style.display = msg2.style.display = "none";
+    msg3.style.display = "flex";
+  }, 10000); // Second message for 5s (total 10s)
+
+  setTimeout(() => {
+    msg3.style.display = "none";
+    cakeSection.classList.remove("hidden");
+  }, 15000); // Third message for 5s (total 15s)
+});
 
 cake.addEventListener("click", () => {
   tapText.style.display = 'none';
@@ -230,11 +256,11 @@ cake.addEventListener("click", () => {
 
   setTimeout(() => {
     birthdayMessage.style.display = 'block';
-  }, 1000);
+  }, 1500); // Increased from 1000 to 1500
 
   setTimeout(() => {
     nextBtn.style.display = 'block';
-  }, 4000);
+  }, 5000); // Increased from 4000 to 5000
 });
 
 document.querySelector('#nextBtn button').onclick = () => {
